@@ -7,6 +7,9 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sqlite3
+from sqlite3 import Error
+
 
 
 import sys
@@ -19,9 +22,32 @@ if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
 if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
+def create_connection(file_name):
+    try:
+        conn = sqlite3.connect(file_name)
+        return conn
+    except Error as e:
+        print(e)
 
+    None
 class Ui_Dialog2(object):
-    def setupUi(self, Dialog):
+    def AddRecord(self):
+        name = self.textEdit_2.toPlainText()
+        sentence = int(self.textEdit_3.toPlainText())
+        rr = []
+
+        rr.append(name)
+        rr.append(sentence)
+
+        cur = conn.cursor()
+        cur.execute("Insert into Prisoner(Name,Sentence) VALUES (?,?)",rr)
+        conn.commit()
+
+        print("Vip")
+
+
+
+    def setupUi2(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 300)
         self.textEdit_2 = QtWidgets.QTextEdit(Dialog)
@@ -54,13 +80,15 @@ class Ui_Dialog2(object):
         self.label_4.setText(_translate("Dialog", "Years"))
         self.pushButton.setText(_translate("Dialog", "Insert"))
 
-
+file_path = 'C:\\Users\\Razor\\Desktop\\Prison.db'
+conn = create_connection(file_path)
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
     ui = Ui_Dialog2()
-    ui.setupUi(Dialog)
+    ui.setupUi2(Dialog)
+    ui.pushButton.clicked.connect(ui.AddRecord)
     Dialog.show()
     sys.exit(app.exec_())
 

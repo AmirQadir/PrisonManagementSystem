@@ -7,13 +7,24 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from AddRecord_Ui_window import Ui_MainWindow
+from AddRecord_UI import Ui_Dialog2
 
+import sys
+
+import PyQt5
+
+if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
+    PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+ 
+if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
+    PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 class Ui_Dialog(object):
-    def OpenAddRecord():
-        self.Dialog = QtWidgets.QDialog()
-        self.ui = AddRecord_UI()
-        self.ui.setupUI(self.Dialog)
-        self.Dialog.show() 
+    def OpenAddRecord(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUI(self.window)
+        self.window.show() 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(837, 304)
@@ -41,6 +52,8 @@ class Ui_Dialog(object):
         self.pushButton_3 = QtWidgets.QPushButton(Dialog)
         self.pushButton_3.setGeometry(QtCore.QRect(264, 252, 81, 21))
         self.pushButton_3.setObjectName("pushButton_3")
+
+        #self.pushButton_2.clicked.connect(self.OpenAddRecord)
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
