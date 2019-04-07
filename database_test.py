@@ -4,7 +4,6 @@ from PyQt5.QtWidgets import QTableWidgetItem
 
 from sqlite3 import Error
 from table import Ui_Dialog
-from AddRecord_UI import Ui_Dialog
 import sys
 
 import PyQt5
