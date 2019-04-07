@@ -8,6 +8,17 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import sys
+
+import PyQt5
+
+if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
+    PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+ 
+if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
+    PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
+
+
 class Ui_Menu(object):
     def setupUi(self, Menu):
         Menu.setObjectName("Menu")
