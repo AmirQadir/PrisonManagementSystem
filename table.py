@@ -7,8 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from AddRecord_Ui_window import Ui_MainWindow
-from AddRecord_UI import Ui_Dialog2
+
 
 import sys
 

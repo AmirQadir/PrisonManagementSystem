@@ -5,7 +5,7 @@ from menu import Ui_Menu
 from sqlite3 import Error
 from table import Ui_Dialog
 import sys
-
+from AddRecords import AddRecords
 import PyQt5
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -22,7 +22,11 @@ class PrisonerRecords:
 		self.table_ui = Ui_Dialog()
 		self.table_ui.setupUi(self.diag)
 		self.table_ui.pushButton.clicked.connect(self.viewRecords)
+		self.table_ui.pushButton_2.clicked.connect(self.addRecords)
 		self.diag.exec_()
+
+	def addRecords(self):
+		pop = AddRecords()
 
 	def viewRecords(self):
 		print("hello")
