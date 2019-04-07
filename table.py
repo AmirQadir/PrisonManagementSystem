@@ -9,6 +9,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Dialog(object):
+    def OpenAddRecord():
+        self.Dialog = QtWidgets.QDialog()
+        self.ui = AddRecord_UI()
+        self.ui.setupUI(self.Dialog)
+        self.Dialog.show() 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(837, 304)

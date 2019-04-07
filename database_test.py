@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QTableWidgetItem
 
 from sqlite3 import Error
 from table import Ui_Dialog
+from AddRecord_UI import Ui_Dialog2
 import sys
 
 import PyQt5
@@ -30,6 +31,21 @@ conn = create_connection(file_path)
 
 def addRecord():
 	print("WElcome")
+	#pp = QtWidgets.QApplication(sys.argv)
+	#Dialog2 = QtWidgets.QDialog()
+	#ui2 = Ui_Dialog2()
+	#ui2.setupUi(Dialog2)
+	#Dialog2.show()
+	#sys.exit(app.exec_())
+	app = QtWidgets.QApplication(sys.argv)
+	Dialog = QtWidgets.QDialog()
+	ui = Ui_Dialog2()
+	ui.setupUi(Dialog)
+	#ui.pushButton.clicked.connect(viewRecord)
+	#ui.pushButton_2.clicked.connect(addRecord)
+	Dialog.show()
+
+
 
 def viewRecord():
 	print("hello")
