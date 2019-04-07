@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QTableWidgetItem
 
 from sqlite3 import Error
 from table import Ui_Dialog
-#from AddRecord_UI import Ui_Dialog2
+from AddRecord_UI import Ui_Dialog2
 
 #from AddRecord_Ui_window import Ui_MainWindow
 
@@ -19,25 +19,29 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 
-def create_connection(file_name):
-	try:
-		conn = sqlite3.connect(file_name)
-		return conn
-	except Error as e:
-		print(e)
+# def create_connection(file_name):
+# 	try:
+# 		conn = sqlite3.connect(file_name)
+# 		return conn
+# 	except Error as e:
+# 		print(e)
 
-	None
-#conn = sqlite3.connect('prison.db')
-file_path = 'C:\\Users\\Razor\\Desktop\\Prison.db'
-conn = create_connection(file_path)
+# 	None
+
+
+#file_path = 'C:\\Users\\Razor\\Desktop\\Prison.db'
+#conn = create_connection(file_path)
+
 
 
 def addRecord():
-	#app2 = QtWidgets.QApplication(sys.argv)
+	Dialog2 = QtWidgets.QDialog()
+	ui2 = Ui_Dialog2()
+	ui2.setupUi2(Dialog2)
+	#Dialog2.show()
+	Dialog2.exec_()
+	#return Dialog2
 	
-
-
-
 
 def viewRecord():
 	print("hello")
@@ -73,6 +77,9 @@ def deleteRecord():
     cur.execute(statement, (id,))
     viewRecord()
 
+
+conn = sqlite3.connect('prison.db')
+
 app = QtWidgets.QApplication(sys.argv)
 Dialog = QtWidgets.QDialog()
 ui = Ui_Dialog()
@@ -84,10 +91,10 @@ Dialog.show()
 sys.exit(app.exec_())
 
 
-from ui.AddRecord_UI import Ui_Dialog2
+#from ui.AddRecord_UI import Ui_Dialog2
 # We can also close the connection if we are done with it.
 # Just be sure any changes have been committed or they will be lost.
-conn.close()
+#conn.close()
 
 
 

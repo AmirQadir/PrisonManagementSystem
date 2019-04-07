@@ -22,16 +22,17 @@ if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
 if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
-def create_connection(file_name):
-    try:
-        conn = sqlite3.connect(file_name)
-        return conn
-    except Error as e:
-        print(e)
+# def create_connection(file_name):
+#     try:
+#         conn = sqlite3.connect(file_name)
+#         return conn
+#     except Error as e:
+#         print(e)
 
-    None
+    # None
 class Ui_Dialog2(object):
     def AddRecord(self):
+        conn = sqlite3.connect('prison.db')
         name = self.textEdit_2.toPlainText()
         sentence = int(self.textEdit_3.toPlainText())
         rr = []
@@ -69,6 +70,8 @@ class Ui_Dialog2(object):
         self.pushButton.setGeometry(QtCore.QRect(170, 250, 75, 23))
         self.pushButton.setObjectName("pushButton")
 
+        self.pushButton.clicked.connect(self.AddRecord)
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
@@ -80,10 +83,15 @@ class Ui_Dialog2(object):
         self.label_4.setText(_translate("Dialog", "Years"))
         self.pushButton.setText(_translate("Dialog", "Insert"))
 
-file_path = 'C:\\Users\\Razor\\Desktop\\Prison.db'
-conn = create_connection(file_path)
+#file_path = 'C:\\Users\\Razor\\Desktop\\Prison.db'
+#conn = create_connection(file_path)
+
+
 if __name__ == "__main__":
     import sys
+    
+    #conn = sqlite3.connect('prison.db')
+
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
     ui = Ui_Dialog2()
@@ -91,4 +99,5 @@ if __name__ == "__main__":
     ui.pushButton.clicked.connect(ui.AddRecord)
     Dialog.show()
     sys.exit(app.exec_())
+
 

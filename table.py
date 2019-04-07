@@ -20,11 +20,11 @@ if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
 if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 class Ui_Dialog(object):
-    def OpenAddRecord(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUI(self.window)
-        self.window.show() 
+    #def OpenAddRecord(self):
+        # self.window = QtWidgets.QMainWindow()
+        # self.ui = Ui_MainWindow()
+        # self.ui.setupUI(self.window)
+        # self.window.show() 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(837, 304)
