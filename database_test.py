@@ -75,6 +75,7 @@ def deleteRecord():
     
     cur = conn.cursor()
     cur.execute(statement, (id,))
+    conn.commit()
     viewRecord()
 
 
