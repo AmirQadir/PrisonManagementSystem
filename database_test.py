@@ -35,13 +35,15 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
 
 
 def addRecord():
+	print("I am called")
 	Dialog2 = QtWidgets.QDialog()
 	ui2 = Ui_Dialog2()
 	ui2.setupUi2(Dialog2)
 	#Dialog2.show()
 	Dialog2.exec_()
 	#return Dialog2
-	
+	viewRecord()
+
 
 def viewRecord():
 	print("hello")
