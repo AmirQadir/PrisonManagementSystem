@@ -30,6 +30,12 @@ class Ui_Dialog(object):
         self.tableWidget.horizontalHeader().setSortIndicatorShown(False)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.tableWidget.verticalHeader().setCascadingSectionResizes(True)
+        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_2.setGeometry(QtCore.QRect(460, 250, 75, 23))
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_3.setGeometry(QtCore.QRect(264, 252, 81, 21))
+        self.pushButton_3.setObjectName("pushButton_3")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -44,6 +50,8 @@ class Ui_Dialog(object):
         item.setText(_translate("Dialog", "Name"))
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("Dialog", "Sentence (Days Remaining)"))
+        self.pushButton_2.setText(_translate("Dialog", "Add Record"))
+        self.pushButton_3.setText(_translate("Dialog", "Delete Record"))
 
 
 if __name__ == "__main__":
