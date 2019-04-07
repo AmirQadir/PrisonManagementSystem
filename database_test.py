@@ -70,6 +70,16 @@ def viewRecord():
 		print(record,'---')
 	#ui.tableWidget.addRow("")
 	#ui.tableWidget.setItem(0,0,QTableWidgetItem("TEXT"))
+    
+def deleteRecord():
+    r = ui.tableWidget.currentRow()
+    id=ui.tableWidget.item(r,0).text()
+    print(id)
+    statement='DELETE FROM Prisoner WHERE ID=?'
+    
+    cur = conn.cursor()
+    cur.execute(statement, (id,))
+    viewRecord()
 
 app = QtWidgets.QApplication(sys.argv)
 Dialog = QtWidgets.QDialog()
@@ -77,6 +87,7 @@ ui = Ui_Dialog()
 ui.setupUi(Dialog)
 ui.pushButton.clicked.connect(viewRecord)
 ui.pushButton_2.clicked.connect(addRecord)
+ui.pushButton_3.clicked.connect(deleteRecord)
 Dialog.show()
 sys.exit(app.exec_())
 
