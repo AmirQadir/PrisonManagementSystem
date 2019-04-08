@@ -23,10 +23,24 @@ class PrisonerRecords:
 		self.table_ui.setupUi(self.diag)
 		self.table_ui.pushButton.clicked.connect(self.viewRecords)
 		self.table_ui.pushButton_2.clicked.connect(self.addRecords)
+		self.table_ui.pushButton_3.clicked.connect(self.deleteRecords)
+
 		self.diag.exec_()
 
 	def addRecords(self):
 		pop = AddRecords()
+		self.viewRecords()
+		
+	def deleteRecords(self):
+		r = self.table_ui.tableWidget.currentRow()
+		id=self.table_ui.tableWidget.item(r,0).text()
+		print(id)
+		statement='DELETE FROM Prisoner WHERE ID=?'
+
+		cur = self.conn.cursor()
+		cur.execute(statement, (id,))
+		self.conn.commit()
+		self.viewRecords()
 
 	def viewRecords(self):
 		print("hello")
