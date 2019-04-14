@@ -4,4 +4,6 @@ PrisonerRecords.py - table.py - table.ui
 
 Addrecords.py - AddRecord_UI.py - AddRecord_UI.ui
 
-main.py - menu_ui.py - menu_ui.ui
+menu.py - menu_ui.py - menu_ui.ui
+
+main.py - login_ui.py - login_ui.ui
