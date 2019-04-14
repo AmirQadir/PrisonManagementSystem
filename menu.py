@@ -24,12 +24,15 @@ class menu:
 		self.Menu = QtWidgets.QMainWindow()
 		ui = Ui_Menu()
 		ui.setupUi(self.Menu)
-		ui.pushButton.clicked.connect(self.showPris)
+		ui.pushButton.clicked.connect(self.tryToLogin)
 
 	def show(self):
 		self.Menu.show();
 
-	def showPris(self):
+	def tryToLogin(self):
+
+		#read text boxes and do stuff
+
 		pop = PrisonerRecords()
 		
 
