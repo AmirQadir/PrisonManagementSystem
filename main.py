@@ -38,12 +38,7 @@ class Main:
 		sys.exit(app.exec_())	
 	
 	def prisonerRecords(self):
-		# print("hello")
-		# self.diag = QtWidgets.QMainWindow()
-		# menu_ui = Ui_Menu()
-		# menu_ui.setupUi(self.diag)
-		# self.diag.show()
-		pop = PrisonerRecords()
+		pop = PrisonerRecords() #new window
 		
 
 
