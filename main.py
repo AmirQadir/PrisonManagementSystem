@@ -27,14 +27,14 @@ class Main:
 
 		#variables
 		self.ref = 0
-
+		self.conn = sqlite3.connect('prison.db')
 		
 		app = QtWidgets.QApplication(sys.argv)
 		self.login = QtWidgets.QMainWindow()
-		login_ui = Ui_Login_Ui()
-		login_ui.setupUi(self.login)
+		self.login_ui = Ui_Login_Ui()
+		self.login_ui.setupUi(self.login)
 		self.login.show()
-		login_ui.pushButton.clicked.connect(self.loginNow)
+		self.login_ui.pushButton.clicked.connect(self.loginNow)
 		sys.exit(app.exec_())	
 	
 	def prisonerRecords(self):
@@ -42,11 +42,37 @@ class Main:
 		pass
 
 	def loginNow(self):
-		#pop = PrisonerRecords()
-		self.login.hide()
-		self.ref = menu()
-		self.ref.show()
-		print("hello")
+		username = self.login_ui.lineEdit.text()
+		password = self.login_ui.lineEdit_2.text()
+
+		#print("details: " , username , password)
+
+		cur = self.conn.cursor()
+		cur.execute("SELECT password from login where username = ?", (username,) )
+
+		rows = cur.fetchall()
+
+		if(len(rows) == 0):
+			print("incorrect username")
+		else:
+			password_db = rows[0][0]
+
+			if(password == password_db):
+				self.login.hide()
+
+				self.ref = menu()
+				self.ref.show()
+			else:
+				print("incorrect password")
+
+
+
+		#print(rows[0][0]) 
+		#first result ka first element (which is required password cause query only returns one result and only one coloumn)
+
+						
+
+
 		
 
 
