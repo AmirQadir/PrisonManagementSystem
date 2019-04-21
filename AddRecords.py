@@ -37,6 +37,10 @@ class AddRecords:
 		cur.execute("Insert into Prisoner(Name,Sentence) VALUES (?,?)",rr)
 		self.conn.commit()
 
+
+		self.ui.textEdit_2.clear()
+		self.ui.textEdit_3.clear()
+		
 		print("Vip")
 
 			
