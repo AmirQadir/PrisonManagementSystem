@@ -64,6 +64,8 @@ class Main:
 			if(password == password_db):
 				self.login.hide()
 
+
+				#depending on access level correct window open krni hai
 				self.ref = menu(username) #send username as well (for password changing)
 				self.ref.show()
 			else:
