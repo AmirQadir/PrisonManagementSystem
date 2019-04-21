@@ -38,7 +38,12 @@ class menu:
 		pop = PrisonerRecords()
 	
 	def updatePass(self):
+		if self.username == "admin":
+			print("Cant change admin/admin password.")
+			return
+
 		newPass = self.ui.textEdit.toPlainText()
+
 
 		rr = []
 
