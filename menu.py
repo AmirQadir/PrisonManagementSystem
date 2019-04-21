@@ -22,9 +22,11 @@ class menu:
 		self.username = user
 
 		self.Menu = QtWidgets.QMainWindow()
-		ui = Ui_Menu()
-		ui.setupUi(self.Menu)
-		ui.pushButton.clicked.connect(self.PrisRecords)
+		self.ui = Ui_Menu()
+		self.ui.setupUi(self.Menu)
+		self.ui.pushButton.clicked.connect(self.PrisRecords)
+		self.ui.pushButton_7.clicked.connect(self.updatePass)
+		self.ui.label_4.setText(self.username)
 
 	def show(self):
 		self.Menu.show();
@@ -34,6 +36,19 @@ class menu:
 		#read text boxes and do stuff
 		print(self.username)
 		pop = PrisonerRecords()
+	
+	def updatePass(self):
+		newPass = self.ui.textEdit.toPlainText()
+
+		rr = []
+
+		rr.append(newPass)
+		rr.append(self.username)
 		
+		cur = self.conn.cursor()
+		cur.execute("Update login Set password=? where username=?",rr)
+		self.conn.commit()
+		
+		print("updated: " , newPass)
 
 			

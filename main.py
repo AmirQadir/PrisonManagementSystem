@@ -43,9 +43,7 @@ class Main:
 
 		sys.exit(app.exec_())	
 	
-	def prisonerRecords(self):
-		#pop = PrisonerRecords() #new window
-		pass
+
 
 	def loginNow(self):
 		username = self.login_ui.lineEdit.text()
