@@ -24,8 +24,9 @@ class PrisonerRecords:
 		self.table_ui.pushButton.clicked.connect(self.viewRecords)
 		self.table_ui.pushButton_2.clicked.connect(self.addRecords)
 		self.table_ui.pushButton_3.clicked.connect(self.deleteRecords)
-
+		self.viewRecords()
 		self.diag.exec_()
+		
 
 	def addRecords(self):
 		pop = AddRecords()
