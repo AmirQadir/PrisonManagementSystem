@@ -35,6 +35,12 @@ class Main:
 		self.login_ui.setupUi(self.login)
 		self.login.show()
 		self.login_ui.pushButton.clicked.connect(self.loginNow)
+
+		#for quick testing login. delete later
+		self.login_ui.lineEdit.setText("nabeel")
+		self.login_ui.lineEdit_2.setText("12345")
+		#end
+
 		sys.exit(app.exec_())	
 	
 	def prisonerRecords(self):
