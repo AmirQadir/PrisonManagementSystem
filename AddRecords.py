@@ -41,6 +41,6 @@ class AddRecords:
 		self.ui.textEdit_2.clear()
 		self.ui.textEdit_3.clear()
 		
-		print("Vip")
+
 
 			
