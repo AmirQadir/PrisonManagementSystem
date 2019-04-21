@@ -17,22 +17,22 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 class menu:
-	def __init__(self):
+	def __init__(self,user):
 		self.conn = sqlite3.connect('prison.db')
-		
+		self.username = user
 
 		self.Menu = QtWidgets.QMainWindow()
 		ui = Ui_Menu()
 		ui.setupUi(self.Menu)
-		ui.pushButton.clicked.connect(self.tryToLogin)
+		ui.pushButton.clicked.connect(self.PrisRecords)
 
 	def show(self):
 		self.Menu.show();
 
-	def tryToLogin(self):
+	def PrisRecords(self):
 
 		#read text boxes and do stuff
-
+		print(self.username)
 		pop = PrisonerRecords()
 		
 

@@ -60,7 +60,7 @@ class Main:
 			if(password == password_db):
 				self.login.hide()
 
-				self.ref = menu()
+				self.ref = menu(username) #send username as well (for password changing)
 				self.ref.show()
 			else:
 				print("incorrect password")
