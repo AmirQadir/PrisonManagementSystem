@@ -10,6 +10,7 @@ from AddRecords import AddRecords
 from PrisonerRecords import PrisonerRecords
 import PyQt5
 
+
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
  
@@ -26,7 +27,12 @@ class menu:
 		self.ui.setupUi(self.Menu)
 		self.ui.pushButton.clicked.connect(self.PrisRecords)
 		self.ui.pushButton_7.clicked.connect(self.updatePass)
+		self.ui.pushButton_4.clicked.connect(self.logout)
 		self.ui.label_4.setText(self.username)
+
+	def logout(self):
+		print("logout")
+		self.Menu.close()
 
 	def show(self):
 		self.Menu.show();
@@ -36,6 +42,7 @@ class menu:
 		#read text boxes and do stuff
 		print(self.username)
 		pop = PrisonerRecords()
+
 	
 	def updatePass(self):
 		if self.username == "admin":
