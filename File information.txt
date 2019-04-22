@@ -7,3 +7,6 @@ Addrecords.py - AddRecord_UI.py - AddRecord_UI.ui
 menu.py - menu_ui.py - menu_ui.ui
 
 main.py - login_ui.py - login_ui.ui
+
+
+Staff Record Manager - staff.py

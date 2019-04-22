@@ -3,11 +3,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
 from menu_ui import Ui_Menu
 from sqlite3 import Error
-from table import Ui_Dialog
+from StaffRecords_UI import Ui_Dialog
 from login_ui import Ui_Login_Ui
 import sys
 from AddRecords import AddRecords
 from PrisonerRecords import PrisonerRecords
+from StaffRecords import StaffRecords
 import PyQt5
 
 
@@ -28,6 +29,7 @@ class menu:
 		self.ui.pushButton.clicked.connect(self.PrisRecords)
 		self.ui.pushButton_7.clicked.connect(self.updatePass)
 		self.ui.pushButton_4.clicked.connect(self.logout)
+		self.ui.pushButton_2.clicked.connect(self.StaffRecord)
 		self.ui.label_4.setText(self.username)
 
 	def logout(self):
@@ -36,6 +38,10 @@ class menu:
 
 	def show(self):
 		self.Menu.show();
+
+	def StaffRecord(self):
+		print("Working")
+		idk = StaffRecords()
 
 	def PrisRecords(self):
 
