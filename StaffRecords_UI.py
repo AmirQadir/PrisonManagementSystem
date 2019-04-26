@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'table.ui'
+# Form implementation generated from reading ui file 'StaffRecords_UI.ui'
 #
 # Created by: PyQt5 UI code generator 5.9.2
 #
@@ -8,32 +8,22 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
-import sys
-
-import PyQt5
-
-if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
-    PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
- 
-if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
-    PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 class Ui_Dialog(object):
-    #def OpenAddRecord(self):
-        # self.window = QtWidgets.QMainWindow()
-        # self.ui = Ui_MainWindow()
-        # self.ui.setupUI(self.window)
-        # self.window.show() 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(837, 304)
+        Dialog.resize(806, 317)
         self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(50, 250, 75, 23))
+        self.pushButton.setGeometry(QtCore.QRect(100, 240, 75, 23))
         self.pushButton.setObjectName("pushButton")
         self.tableWidget = QtWidgets.QTableWidget(Dialog)
-        self.tableWidget.setGeometry(QtCore.QRect(30, 20, 751, 192))
+        self.tableWidget.setGeometry(QtCore.QRect(30, 10, 751, 192))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
+        self.tableWidget.setSizePolicy(sizePolicy)
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setColumnCount(9)
         self.tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
@@ -41,18 +31,28 @@ class Ui_Dialog(object):
         self.tableWidget.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(8, item)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(False)
         self.tableWidget.horizontalHeader().setSortIndicatorShown(False)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.tableWidget.verticalHeader().setCascadingSectionResizes(True)
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(460, 250, 75, 23))
+        self.pushButton_2.setGeometry(QtCore.QRect(620, 240, 75, 23))
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_3.setGeometry(QtCore.QRect(264, 252, 81, 21))
+        self.pushButton_3.setGeometry(QtCore.QRect(350, 240, 81, 21))
         self.pushButton_3.setObjectName("pushButton_3")
-
-        #self.pushButton_2.clicked.connect(self.OpenAddRecord)
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -66,7 +66,17 @@ class Ui_Dialog(object):
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("Dialog", "Name"))
         item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("Dialog", "Sentence (Days Remaining)"))
+        item.setText(_translate("Dialog", "CNIC"))
+        item = self.tableWidget.horizontalHeaderItem(3)
+        item.setText(_translate("Dialog", "Position"))
+        item = self.tableWidget.horizontalHeaderItem(4)
+        item.setText(_translate("Dialog", "Salary"))
+        item = self.tableWidget.horizontalHeaderItem(5)
+        item.setText(_translate("Dialog", "Phone"))
+        item = self.tableWidget.horizontalHeaderItem(6)
+        item.setText(_translate("Dialog", "DateOfJoining"))
+        item = self.tableWidget.horizontalHeaderItem(7)
+        item.setText(_translate("Dialog", "DateOfLeaving"))
         self.pushButton_2.setText(_translate("Dialog", "Add Record"))
         self.pushButton_3.setText(_translate("Dialog", "Delete Record"))
 
