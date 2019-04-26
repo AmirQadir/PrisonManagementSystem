@@ -8,30 +8,17 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
-import sys
-
-import PyQt5
-
-if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
-    PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
- 
-if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
-    PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 class Ui_Dialog(object):
-    #def OpenAddRecord(self):
-        # self.window = QtWidgets.QMainWindow()
-        # self.ui = Ui_MainWindow()
-        # self.ui.setupUI(self.window)
-        # self.window.show() 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(837, 304)
-        self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(50, 250, 75, 23))
-        self.pushButton.setObjectName("pushButton")
-        self.tableWidget = QtWidgets.QTableWidget(Dialog)
-        self.tableWidget.setGeometry(QtCore.QRect(30, 20, 751, 192))
+        self.verticalLayoutWidget = QtWidgets.QWidget(Dialog)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(40, 20, 751, 261))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.tableWidget = QtWidgets.QTableWidget(self.verticalLayoutWidget)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setRowCount(0)
@@ -45,14 +32,22 @@ class Ui_Dialog(object):
         self.tableWidget.horizontalHeader().setSortIndicatorShown(False)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.tableWidget.verticalHeader().setCascadingSectionResizes(True)
-        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(460, 250, 75, 23))
+        self.verticalLayout.addWidget(self.tableWidget)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.pushButton = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout.addWidget(self.pushButton)
+        self.pushButton_2 = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_3.setGeometry(QtCore.QRect(264, 252, 81, 21))
+        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.pushButton_4 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.horizontalLayout.addWidget(self.pushButton_4)
+        self.pushButton_3 = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.pushButton_3.setObjectName("pushButton_3")
-
-        #self.pushButton_2.clicked.connect(self.OpenAddRecord)
+        self.horizontalLayout.addWidget(self.pushButton_3)
+        self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -60,14 +55,15 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.pushButton.setText(_translate("Dialog", "load table"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("Dialog", "ID"))
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("Dialog", "Name"))
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("Dialog", "Sentence (Days Remaining)"))
+        self.pushButton.setText(_translate("Dialog", "Refresh"))
         self.pushButton_2.setText(_translate("Dialog", "Add Record"))
+        self.pushButton_4.setText(_translate("Dialog", "Edit Record"))
         self.pushButton_3.setText(_translate("Dialog", "Delete Record"))
 
 
