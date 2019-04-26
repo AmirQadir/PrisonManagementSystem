@@ -24,6 +24,8 @@ class PrisonerRecords:
 		self.table_ui.pushButton.clicked.connect(self.viewRecords)
 		self.table_ui.pushButton_2.clicked.connect(self.addRecords)
 		self.table_ui.pushButton_3.clicked.connect(self.deleteRecords)
+		self.table_ui.pushButton_5.clicked.connect(self.searchRecords)
+
 		self.viewRecords()
 		self.diag.exec_()
 		
@@ -42,6 +44,29 @@ class PrisonerRecords:
 		cur.execute(statement, (id,))
 		self.conn.commit()
 		self.viewRecords()
+
+	def searchRecords(self):
+		data = self.table_ui.textEdit.toPlainText()
+		cur = self.conn.cursor()
+		statement = 'SELECT * from Prisoner WHERE ID=? OR NAME=?'
+		cur.execute(statement, (data,data))
+
+		rows = cur.fetchall()
+
+		self.table_ui.tableWidget.setRowCount(len(rows)) #Number of records jitna
+
+		itr1 = 0
+		itr2 = 0
+		for record in rows:
+			itr2 = 0
+			for eachrecord in record:
+				print(eachrecord," ..")
+				self.table_ui.tableWidget.setItem(itr1,itr2,QTableWidgetItem(str(eachrecord)))
+				itr2 = itr2 + 1
+				# print("I am here", str(eachrecord))
+			itr1 = itr1 + 1
+
+
 
 	def viewRecords(self):
 		print("hello")
