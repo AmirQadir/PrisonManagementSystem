@@ -9,6 +9,7 @@ import sys
 from AddRecords import AddRecords
 from PrisonerRecords import PrisonerRecords
 from StaffRecords import StaffRecords
+from video import video
 import PyQt5
 
 
@@ -30,6 +31,7 @@ class menu:
 		self.ui.pushButton_7.clicked.connect(self.updatePass)
 		self.ui.pushButton_4.clicked.connect(self.logout)
 		self.ui.pushButton_2.clicked.connect(self.StaffRecord)
+		self.ui.pushButton_3.clicked.connect(self.showVideo)
 		self.ui.label_4.setText(self.username)
 
 	def logout(self):
@@ -38,6 +40,11 @@ class menu:
 
 	def show(self):
 		self.Menu.show();
+
+	def showVideo(self):
+		print("ShowVideo function")
+		vid = video()
+		vid.show_webcam()
 
 	def StaffRecord(self):
 		print("Working")
