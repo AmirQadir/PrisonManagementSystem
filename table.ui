@@ -93,6 +93,16 @@
         <string>Sentence (Days Remaining)</string>
        </property>
       </column>
+      <column>
+       <property name="text">
+        <string>New Column</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Arrival Date</string>
+       </property>
+      </column>
      </widget>
     </item>
     <item>

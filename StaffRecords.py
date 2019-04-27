@@ -16,7 +16,7 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
 
 class StaffRecords:
 	def __init__(self):
-		self.conn = sqlite3.connect('prison.db')
+		self.conn = sqlite3.connect('se_db.db')
 
 		self.diag = QtWidgets.QDialog()
 		self.table_ui = Ui_Dialog()
@@ -48,7 +48,7 @@ class StaffRecords:
 	def viewRecords(self):
 		print("hello")
 		cur = self.conn.cursor()
-		cur.execute("SELECT * from Prisoner")
+		cur.execute("SELECT * from Staff")
 
 		rows = cur.fetchall()
 
