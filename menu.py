@@ -21,7 +21,7 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 class menu:
-	def __init__(self,user):
+	def __init__(self,user,access_level):
 		self.conn = sqlite3.connect('prison.db')
 		self.username = user
 

@@ -52,7 +52,7 @@ class Main:
 		#print("details: " , username , password)
 
 		cur = self.conn.cursor()
-		cur.execute("SELECT password from login where username = ?", (username,) )
+		cur.execute("SELECT password,access_level from login where username = ?", (username,) )
 
 		rows = cur.fetchall()
 
@@ -61,12 +61,14 @@ class Main:
 		else:
 			password_db = rows[0][0]
 
+			access_level = rows[0][1]
+
 			if(password == password_db):
 				self.login.hide()
 
 
 				#depending on access level correct window open krni hai
-				self.ref = menu(username) #send username as well (for password changing)
+				self.ref = menu(username,access_level) #send username as well (for password changing)
 				self.ref.show()
 			else:
 				print("incorrect password")

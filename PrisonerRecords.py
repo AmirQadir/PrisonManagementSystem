@@ -16,7 +16,7 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
 
 class PrisonerRecords:
 	def __init__(self):
-		self.conn = sqlite3.connect('se_db.db')
+		self.conn = sqlite3.connect('prison.db')
 
 		self.diag = QtWidgets.QDialog()
 		self.table_ui = Ui_Dialog()
@@ -38,7 +38,7 @@ class PrisonerRecords:
 		r = self.table_ui.tableWidget.currentRow()
 		id=self.table_ui.tableWidget.item(r,0).text()
 		print(id)
-		statement='DELETE FROM se_db WHERE ID=?'
+		statement='DELETE FROM prisoner WHERE ID=?'
 
 		cur = self.conn.cursor()
 		cur.execute(statement, (id,))
@@ -48,7 +48,7 @@ class PrisonerRecords:
 	def searchRecords(self):
 		data = self.table_ui.textEdit.toPlainText()
 		cur = self.conn.cursor()
-		statement = 'SELECT * from se_db WHERE ID=? OR NAME=?'
+		statement = 'SELECT * from prisoner WHERE ID=? OR NAME=?'
 		cur.execute(statement, (data,data))
 
 		rows = cur.fetchall()
@@ -71,7 +71,7 @@ class PrisonerRecords:
 	def viewRecords(self):
 		print("hello")
 		cur = self.conn.cursor()
-		cur.execute("SELECT * from Prisoner ")
+		cur.execute("SELECT * from prisoner")
 
 		rows = cur.fetchall()
 
