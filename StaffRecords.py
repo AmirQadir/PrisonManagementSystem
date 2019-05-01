@@ -16,7 +16,7 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
 
 class StaffRecords:
 	def __init__(self):
-		self.conn = sqlite3.connect('se_db.db')
+		self.conn = sqlite3.connect('prison.db')
 
 		self.diag = QtWidgets.QDialog()
 		self.table_ui = Ui_Dialog()
