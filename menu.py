@@ -35,7 +35,14 @@ class menu:
 		self.ui.pushButton_2.clicked.connect(self.StaffRecord)
 		self.ui.pushButton_3.clicked.connect(self.showVideo)
 		self.ui.pushButton_6.clicked.connect(self.Account)
+
 		self.ui.label_4.setText(self.username)
+		print("acccess level: " , access_level)
+
+		if access_level != 0:
+			self.ui.pushButton_6.setEnabled(False)
+
+
 
 	def logout(self):
 		print("logout")
