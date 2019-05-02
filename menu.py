@@ -55,7 +55,6 @@ class menu:
 		self.Menu.show();
 
 	def showVideo(self):
-		print("ShowVideo function")
 		vid = video()
 		vid.show_webcam()
 
