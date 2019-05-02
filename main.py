@@ -8,6 +8,7 @@ from table import Ui_Dialog
 import sys
 from PrisonerRecords import PrisonerRecords
 import PyQt5
+import hashing
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
@@ -63,7 +64,11 @@ class Main:
 
 			access_level = rows[0][1]
 
-			if(password == password_db):
+			# if(password == password_db):
+			# 	self.login.hide()
+
+			if(hashing.matchHash(password,password_db)):
+				print("hash match")
 				self.login.hide()
 
 
