@@ -6,6 +6,7 @@ from sqlite3 import Error
 from Account_UI import Ui_Dialog
 import sys
 import PyQt5
+import hashing
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
@@ -22,10 +23,38 @@ class Account:
 		self.account_ui.setupUi(self.diag)
 		#self.table_ui.pushButton.clicked.connect(self.viewRecords)
 		#self.table_ui.pushButton_2.clicked.connect(self.addRecords)
-		#self.table_ui.pushButton_3.clicked.connect(self.deleteRecords)
-		#self.viewRecords()
+		self.account_ui.pushButton_4.clicked.connect(self.resetPassword)
+		self.viewRecords()
 		self.diag.exec_()
 		
+
+
+	def resetPassword(self):
+#		print("Reset password clicked")
+
+		row = self.account_ui.tableWidget.currentRow()
+		
+		selected_username = (self.account_ui.tableWidget.item(row,1).text() )
+		print(selected_username)
+
+		if selected_username == "admin":
+			print("Cant change admin/admin password.")
+			return
+
+		newPass = "12345"
+		my_hash = hashing.getHash(newPass)
+
+		rr = []
+
+		rr.append(my_hash)
+		rr.append(selected_username)
+		
+		cur = self.conn.cursor()
+		cur.execute("Update login Set password=? where username=?",rr)
+		self.conn.commit()
+
+		print("Reset password of: " , selected_username , " to " ,  newPass)
+		print("Hash: " , my_hash)
 
 	def addRecords(self):
 		pop = AddRecords()
@@ -45,11 +74,11 @@ class Account:
 	def viewRecords(self):
 		print("hello")
 		cur = self.conn.cursor()
-		cur.execute("SELECT * from Prisoner")
+		cur.execute("SELECT id , username from login")
 
 		rows = cur.fetchall()
 
-		self.table_ui.tableWidget.setRowCount(len(rows)) #Number of records jitna
+		self.account_ui.tableWidget.setRowCount(len(rows)) #Number of records jitna
 
 		itr1 = 0
 		itr2 = 0
@@ -57,9 +86,9 @@ class Account:
 			itr2 = 0
 			for eachrecord in record:
 				print(eachrecord," ..")
-				self.table_ui.tableWidget.setItem(itr1,itr2,QTableWidgetItem(str(eachrecord)))
+				self.account_ui.tableWidget.setItem(itr1,itr2,QTableWidgetItem(str(eachrecord)))
 				itr2 = itr2 + 1
 				# print("I am here", str(eachrecord))
 			itr1 = itr1 + 1
 
-			
+		
