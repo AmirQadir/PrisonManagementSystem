@@ -12,6 +12,7 @@ from StaffRecords import StaffRecords
 from Account import Account
 from video import video
 import PyQt5
+import hashing
 
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -43,7 +44,6 @@ class menu:
 	def Account(self):
 		acc = Account()
 
-
 	def show(self):
 		self.Menu.show();
 
@@ -69,17 +69,17 @@ class menu:
 			return
 
 		newPass = self.ui.textEdit.toPlainText()
-
+		my_hash = hashing.getHash(newPass)
 
 		rr = []
 
-		rr.append(newPass)
+		rr.append(my_hash)
 		rr.append(self.username)
 		
 		cur = self.conn.cursor()
 		cur.execute("Update login Set password=? where username=?",rr)
 		self.conn.commit()
 		
-		print("updated: " , newPass)
+		print("updated db with this password and this hash: " , newPass , " " ,  my_hash)
 
 			

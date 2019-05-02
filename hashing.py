@@ -17,4 +17,3 @@ def matchHash(my_str , my_hash):
 	return False
 
 
-print("hash: " , getHash("12345"))
