@@ -17,11 +17,11 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
 
 class AddRecords:
 	def __init__(self,rights,data):
-		self.conn = sqlite3.connect('prison.db')
+		self.conn = sqlite3.connect('se_db.db')
 		self.rights = rights
 		self.data = data
 		
-
+		self.rr = []
 		self.diag = QtWidgets.QDialog()
 		self.ui = Ui_Dialog()
 		self.ui.setupUi(self.diag)
@@ -30,22 +30,81 @@ class AddRecords:
 			self.editRecord()
 
 		self.diag.exec_()
-
+	
 	def AddRecord(self):
-		name = self.ui.textEdit_2.toPlainText()
+		name = self.ui.textEdit.toPlainText()
+		section_ID = 1
+		cell_ID = 1 #Filhal Hardcoded
+		arrival_Date = '09/11'
+		release_Date = '09/22'
+		Crime = 'Shararti'
+		crime_description = self.ui.textEdit_5.toPlainText()
 		sentence = int(self.ui.textEdit_3.toPlainText())
-		rr = []
+		Medical_Status = 'Bemaar'
+		Emergency_contact_name = self.ui.textEdit_6.toPlainText()
+		duty_assigned = 'IDK'
 
-		rr.append(name)
-		rr.append(sentence)
+		age = (self.ui.textEdit_4.toPlainText())
+		Emergency_contact_number = self.ui.textEdit_7.toPlainText()
+
+
+		newrr = []
+		#rr.append(5)
+		self.rr.append(name)
+		self.rr.append(section_ID)
+		self.rr.append(cell_ID)
+		self.rr.append(arrival_Date)
+		self.rr.append(release_Date)
+		self.rr.append(Crime)
+		self.rr.append(crime_description)
+		self.rr.append(sentence)
+		self.rr.append(Medical_Status)
+		self.rr.append(Emergency_contact_name)
+		self.rr.append(duty_assigned)
+
+		self.rr.append(age)
+
+		self.rr.append(Emergency_contact_number)
 
 		cur = self.conn.cursor()
-		cur.execute("Insert into Prisoner(Name,Sentence) VALUES (?,?)",rr)
+
+		if(self.rights==0):
+
+			cur.execute("Insert into Prisoner(prisoner_name,section_id,cell_id,arrival_date,release_date,crime,crime_description,sentence,medical_status,emergency_name,work_assigned,Emergency_contact,Age) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",self.rr)
+
+
+			
+		else:
+			#EditRecord
+			
+			
+			iterator = 0
+			
+			#newrr.append(self.rr[0]) #ID at end
+
+			for i in self.rr:
+				if(iterator==0):
+					None
+				else:
+					newrr.append(i)
+				iterator = iterator + 1
+
+			newrr.append(self.rr[0]) #ID at end
+
+			cur.execute("Update Prisoner SET prisoner_name=?, section_id=?,cell_id=?,arrival_date=?,release_date=?,crime=?,crime_description=?,sentence=?,medical_status=?,emergency_name=?,work_assigned=?,Emergency_contact=?,Age=? WHERE prisoner_id=?",newrr)
 		self.conn.commit()
+		self.rr.clear()
+		newrr.clear()
 
-
-		self.ui.textEdit_2.clear()
+		self.ui.textEdit.clear()
 		self.ui.textEdit_3.clear()
+		self.ui.textEdit_4.clear()
+		self.ui.textEdit_5.clear()
+		self.ui.textEdit_6.clear()
+		self.ui.textEdit_7.clear()
+
+		
+		
 
 
 	def editRecord(self):
@@ -73,6 +132,7 @@ class AddRecords:
 			'''
 
 		mydata = self.data[0]
+		print("Data Received",self.data)
 		ID = mydata[0]
 		Name = mydata[1]
 		section = mydata[2]
@@ -89,6 +149,7 @@ class AddRecords:
 		work_Assigned = mydata[12]
 		Age = mydata[13]
 
+		self.rr.append(ID)
 
 
 
@@ -102,6 +163,8 @@ class AddRecords:
 		self.ui.textEdit_3.setText(str(sentence))
 		self.ui.textEdit_6.setText(str(emg_Name))
 		self.ui.textEdit_7.setText(str(emg_Contact))
+
+
 
 
 
