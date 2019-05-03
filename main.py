@@ -28,7 +28,7 @@ class Main:
 
 		#variables
 		self.ref = 0
-		self.conn = sqlite3.connect('prison.db')		
+		self.conn = sqlite3.connect('se_db.db')		
 		app = QtWidgets.QApplication(sys.argv)
 		self.login = QtWidgets.QMainWindow()
 		self.login_ui = Ui_Login_Ui()
@@ -37,7 +37,7 @@ class Main:
 		self.login_ui.pushButton.clicked.connect(self.loginNow)
 
 		#for quick testing login. delete later
-		self.login_ui.lineEdit.setText("admin")
+		self.login_ui.lineEdit.setText("0")
 		self.login_ui.lineEdit_2.setText("admin")
 		#end
 
@@ -46,13 +46,13 @@ class Main:
 
 
 	def loginNow(self):
-		username = self.login_ui.lineEdit.text()
+		user_id = self.login_ui.lineEdit.text()
 		password = self.login_ui.lineEdit_2.text()
 
 		#print("details: " , username , password)
 
 		cur = self.conn.cursor()
-		cur.execute("SELECT password,access_level from login where username = ?", (username,) )
+		cur.execute("SELECT password,access_level,staff_name from staff where staff_id = ?", (user_id,) )
 
 		rows = cur.fetchall()
 
@@ -63,16 +63,18 @@ class Main:
 
 			access_level = rows[0][1]
 
+			username = rows[0][2]
+
 			# if(password == password_db):
 			# 	self.login.hide()
-
+			print("hash from db: " , password_db)
 			if(hashing.matchHash(password,password_db)):
 				print("hash match")
 				self.login.hide()
 
 
 				#depending on access level correct window open krni hai
-				self.ref = menu(username,access_level) #send username as well (for password changing)
+				self.ref = menu(user_id,username,access_level) #send username as well (for password changing)
 				self.ref.show()
 			else:
 				print("incorrect password")

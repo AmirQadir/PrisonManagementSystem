@@ -23,9 +23,10 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 class menu:
-	def __init__(self,user,access_level):
+	def __init__(self,user_id,username,access_level):
 		self.conn = sqlite3.connect('prison.db')
-		self.username = user
+		self.username = username
+		self.user_id = user_id
 		self.access = access_level
 
 		self.Menu = QtWidgets.QMainWindow()
@@ -37,8 +38,8 @@ class menu:
 		self.ui.pushButton_2.clicked.connect(self.StaffRecord)
 		self.ui.pushButton_3.clicked.connect(self.showVideo)
 		self.ui.pushButton_6.clicked.connect(self.Account)
-
-		self.ui.label_4.setText(self.username)
+		this_user = self.user_id + " " + self.username  
+		self.ui.label_4.setText(this_user)
 		print("acccess level: " , access_level)
 
 		if access_level != 0:
