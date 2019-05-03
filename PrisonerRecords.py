@@ -50,7 +50,7 @@ class PrisonerRecords:
 		r = self.table_ui.tableWidget.currentRow()
 		id=self.table_ui.tableWidget.item(r,0).text()
 		print(id)
-		statement='DELETE FROM prisoner WHERE ID=?'
+		statement='DELETE FROM prisoner WHERE prisoner_id=?'
 
 		cur = self.conn.cursor()
 		cur.execute(statement, (id,))
