@@ -74,6 +74,7 @@ class Ui_Login_Ui(object):
         Login_Ui.setStatusBar(self.statusbar)
 
         self.retranslateUi(Login_Ui)
+        self.lineEdit_2.returnPressed.connect(self.pushButton.click)
         QtCore.QMetaObject.connectSlotsByName(Login_Ui)
 
     def retranslateUi(self, Login_Ui):

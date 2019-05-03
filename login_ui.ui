@@ -128,5 +128,22 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>lineEdit_2</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>229</x>
+     <y>245</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>190</x>
+     <y>304</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

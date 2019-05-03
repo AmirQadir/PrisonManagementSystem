@@ -11,6 +11,7 @@ from PrisonerRecords import PrisonerRecords
 from StaffRecords import StaffRecords
 from Account import Account
 from video import video
+#from main import main
 import PyQt5
 import hashing
 
@@ -48,6 +49,7 @@ class menu:
 	def logout(self):
 		print("logout")
 		self.Menu.close()
+		#something = Main(0)
 
 	def Account(self):
 		acc = Account()

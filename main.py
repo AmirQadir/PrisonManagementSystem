@@ -1,13 +1,13 @@
 import sqlite3
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
-from menu import menu
 from login_ui import Ui_Login_Ui
 from sqlite3 import Error
 from table import Ui_Dialog
 import sys
-from PrisonerRecords import PrisonerRecords
 import PyQt5
+from menu import menu
+from PrisonerRecords import PrisonerRecords
 import hashing
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -28,8 +28,7 @@ class Main:
 
 		#variables
 		self.ref = 0
-		self.conn = sqlite3.connect('prison.db')
-		
+		self.conn = sqlite3.connect('prison.db')		
 		app = QtWidgets.QApplication(sys.argv)
 		self.login = QtWidgets.QMainWindow()
 		self.login_ui = Ui_Login_Ui()
