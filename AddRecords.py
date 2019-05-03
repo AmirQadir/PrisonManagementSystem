@@ -6,6 +6,7 @@ from sqlite3 import Error
 from table import Ui_Dialog
 import sys
 from AddRecord_UI import Ui_Dialog
+import datetime
 
 import PyQt5
 
@@ -35,8 +36,9 @@ class AddRecords:
 		name = self.ui.textEdit.toPlainText()
 		section_ID = 1
 		cell_ID = 1 #Filhal Hardcoded
-		arrival_Date = '09/11'
-		release_Date = '09/22'
+		#arrival_Date = '09/11'
+		x = datetime.datetime.now()
+		arrival_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year)
 		Crime = 'Shararti'
 		crime_description = self.ui.textEdit_5.toPlainText()
 		sentence = int(self.ui.textEdit_3.toPlainText())
@@ -46,7 +48,8 @@ class AddRecords:
 
 		age = (self.ui.textEdit_4.toPlainText())
 		Emergency_contact_number = self.ui.textEdit_7.toPlainText()
-
+		release_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year+sentence)
+		
 
 		newrr = []
 		#rr.append(5)
