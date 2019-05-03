@@ -27,18 +27,23 @@ class PrisonerRecords:
 		self.table_ui.pushButton.clicked.connect(self.viewRecords)
 		if(access_level!=0):
 			self.table_ui.pushButton_2.setEnabled(False)
+			self.table_ui.pushButton_4.setEnabled(False)
 			self.table_ui.pushButton_3.setEnabled(False)
 		else:
 			self.table_ui.pushButton_2.clicked.connect(self.addRecords)
+			self.table_ui.pushButton_4.clicked.connect(self.editRecords)
 			self.table_ui.pushButton_3.clicked.connect(self.deleteRecords)
 		self.table_ui.pushButton_5.clicked.connect(self.searchRecords)
+
 
 		self.viewRecords()
 		self.diag.exec_()
 		
 
 	def addRecords(self):
-		pop = AddRecords()
+		data = None
+
+		pop = AddRecords(0,data)
 		self.viewRecords()
 		
 	def deleteRecords(self):
@@ -72,6 +77,22 @@ class PrisonerRecords:
 				itr2 = itr2 + 1
 				# print("I am here", str(eachrecord))
 			itr1 = itr1 + 1
+
+	def editRecords(self):
+
+
+		selectedRow = self.table_ui.tableWidget.currentRow()
+		unique_id = self.table_ui.tableWidget.item(selectedRow,0).text()
+		statement='SELECT * FROM prisoner WHERE prisoner_id=?'
+		cur = self.conn.cursor()
+
+		cur.execute(statement, (unique_id,))
+		data = cur.fetchall() #selected row
+
+
+		pops = AddRecords(1,data)
+		print("HI")
+		self.viewRecords()
 
 
 
