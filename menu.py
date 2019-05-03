@@ -25,6 +25,7 @@ class menu:
 	def __init__(self,user,access_level):
 		self.conn = sqlite3.connect('prison.db')
 		self.username = user
+		self.access = access_level
 
 		self.Menu = QtWidgets.QMainWindow()
 		self.ui = Ui_Menu()
@@ -66,7 +67,7 @@ class menu:
 
 		#read text boxes and do stuff
 		print(self.username)
-		pop = PrisonerRecords()
+		pop = PrisonerRecords(self.access)
 
 	
 	def updatePass(self):

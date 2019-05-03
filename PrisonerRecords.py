@@ -15,15 +15,20 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 class PrisonerRecords:
-	def __init__(self):
+	def __init__(self,access_level):
 		self.conn = sqlite3.connect('prison.db')
+		print("I am here",access_level)
 
 		self.diag = QtWidgets.QDialog()
 		self.table_ui = Ui_Dialog()
 		self.table_ui.setupUi(self.diag)
 		self.table_ui.pushButton.clicked.connect(self.viewRecords)
-		self.table_ui.pushButton_2.clicked.connect(self.addRecords)
-		self.table_ui.pushButton_3.clicked.connect(self.deleteRecords)
+		if(access_level!=0):
+			self.table_ui.pushButton_2.setEnabled(False)
+			self.table_ui.pushButton_3.setEnabled(False)
+		else:
+			self.table_ui.pushButton_2.clicked.connect(self.addRecords)
+			self.table_ui.pushButton_3.clicked.connect(self.deleteRecords)
 		self.table_ui.pushButton_5.clicked.connect(self.searchRecords)
 
 		self.viewRecords()
