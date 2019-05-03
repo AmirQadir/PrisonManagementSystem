@@ -90,7 +90,47 @@
       </column>
       <column>
        <property name="text">
-        <string>Sentence (Days Remaining)</string>
+        <string>Section</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Cell</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Arrival Date</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Release Date</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Crime</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Crime Description</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Sentence</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Medical Status</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Emergency Name</string>
        </property>
       </column>
       <column>
@@ -100,7 +140,12 @@
       </column>
       <column>
        <property name="text">
-        <string>Arrival Date</string>
+        <string>Emergency Contact</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Age</string>
        </property>
       </column>
      </widget>
