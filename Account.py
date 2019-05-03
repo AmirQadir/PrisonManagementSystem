@@ -16,7 +16,7 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
 
 class Account:
 	def __init__(self):
-		self.conn = sqlite3.connect('prison.db')
+		self.conn = sqlite3.connect('se_db.db')
 
 		self.diag = QtWidgets.QDialog()
 		self.account_ui = Ui_Dialog()
@@ -34,10 +34,10 @@ class Account:
 
 		row = self.account_ui.tableWidget.currentRow()
 		
-		selected_username = (self.account_ui.tableWidget.item(row,1).text() )
-		print(selected_username)
+		selected_id = (self.account_ui.tableWidget.item(row,0).text() )
+		print(selected_id)
 
-		if selected_username == "admin":
+		if selected_id == "0":
 			print("Cant change admin/admin password.")
 			return
 
@@ -47,13 +47,13 @@ class Account:
 		rr = []
 
 		rr.append(my_hash)
-		rr.append(selected_username)
+		rr.append(selected_id)
 		
 		cur = self.conn.cursor()
-		cur.execute("Update login Set password=? where username=?",rr)
+		cur.execute("Update Staff Set password=? where staff_id=?",rr)
 		self.conn.commit()
 
-		print("Reset password of: " , selected_username , " to " ,  newPass)
+		print("Reset password of userID: " , selected_id , " to " ,  newPass)
 		print("Hash: " , my_hash)
 
 	def addRecords(self):
@@ -74,7 +74,7 @@ class Account:
 	def viewRecords(self):
 		print("hello")
 		cur = self.conn.cursor()
-		cur.execute("SELECT id , username from login")
+		cur.execute("SELECT staff_id , staff_name  from Staff")
 
 		rows = cur.fetchall()
 
