@@ -11,9 +11,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(424, 353)
+        Dialog.resize(424, 343)
         self.verticalLayoutWidget = QtWidgets.QWidget(Dialog)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 40, 401, 301))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 40, 401, 281))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -44,9 +44,6 @@ class Ui_Dialog(object):
         self.label_5 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_5.setObjectName("label_5")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_5)
-        self.comboBox_2 = QtWidgets.QComboBox(self.verticalLayoutWidget)
-        self.comboBox_2.setObjectName("comboBox_2")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.comboBox_2)
         self.label_6 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_6.setObjectName("label_6")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_6)
@@ -71,6 +68,9 @@ class Ui_Dialog(object):
         self.textEdit_7 = QtWidgets.QTextEdit(self.verticalLayoutWidget)
         self.textEdit_7.setObjectName("textEdit_7")
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.textEdit_7)
+        self.label = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.label.setObjectName("label")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.label)
         self.verticalLayout.addLayout(self.formLayout)
         self.pushButton = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.pushButton.setObjectName("pushButton")
@@ -89,6 +89,7 @@ class Ui_Dialog(object):
         self.label_9.setText(_translate("Dialog", "Salary"))
         self.label_11.setText(_translate("Dialog", "Contact"))
         self.label_10.setText(_translate("Dialog", "Address"))
+        self.label.setText(_translate("Dialog", "TextLabel"))
         self.pushButton.setText(_translate("Dialog", "Insert"))
 
 
