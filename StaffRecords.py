@@ -7,6 +7,7 @@ from StaffRecords_UI import Ui_Dialog
 import sys
 from AddRecords import AddRecords
 import PyQt5
+from StaffAddRecords import StaffAddRecords
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
@@ -30,7 +31,7 @@ class StaffRecords:
 
 	
 	def addRecords(self):
-		pop = AddRecords()
+		pop = StaffAddRecords(0,None)
 		self.viewRecords()
 		
 	def deleteRecords(self):
