@@ -1,14 +1,18 @@
 import sqlite3
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 from menu_ui import Ui_Menu
 from sqlite3 import Error
 from StaffRecords_UI import Ui_Dialog
 from login_ui import Ui_Login_Ui
+from Alert_UI import Ui_Dialog
 import sys
 from AddRecords import AddRecords
 from PrisonerRecords import PrisonerRecords
 from StaffRecords import StaffRecords
+from Alert import Alert
 from Account import Account
 from video import video
 #from main import main
@@ -61,6 +65,8 @@ class menu:
 	def showVideo(self):
 		vid = video()
 		vid.show_webcam()
+		msg = Alert()
+		
 
 	def StaffRecord(self):
 		print("Working")
