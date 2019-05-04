@@ -39,7 +39,7 @@ class AddRecords:
 		self.diag.exec_()
 	
 	def AddRecord(self):
-		mydata = self.data[0]
+		
 
 		name = self.ui.textEdit.toPlainText()
 		section_ID = self.ui.comboBox.currentText()
@@ -47,12 +47,14 @@ class AddRecords:
 		sentence = int(self.ui.textEdit_3.toPlainText())
 		
 		if self.rights == 1: #edit mode
+			mydata = self.data[0]
 			arrival_Date = mydata[4] #use old arrival date
 
 			#yahan release date change krni hai according to sentence (which has been modified)
 			release_Date = mydata[5] #remomve this 
 
 		else: #new recird hai
+
 			x = datetime.datetime.now()
 			arrival_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year)
 			
