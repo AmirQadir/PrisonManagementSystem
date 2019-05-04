@@ -27,6 +27,12 @@ class AddRecords:
 		self.ui = Ui_Dialog()
 		self.ui.setupUi(self.diag)
 		self.ui.pushButton.clicked.connect(self.AddRecord)
+		self.ui.comboBox.addItems(["1", "2", "3"])
+		self.ui.comboBox_2.addItems(["1", "2", "3","4","5","6","7","8"])
+		self.ui.comboBox_3.addItems(["Fit","Unfit","Critical"])
+		self.ui.comboBox_4.addItems(["Murder","Roberry","Extortion","Blasphemy","Corruption","Theft","Cyber Crimes","Human Trafficking","Attempt to Commit Suicide"])
+		self.ui.comboBox_5.addItems(["None","Laundry","Cleaning","Kitchen"])
+
 		if self.rights == 1:
 			self.editRecord()
 
@@ -34,17 +40,17 @@ class AddRecords:
 	
 	def AddRecord(self):
 		name = self.ui.textEdit.toPlainText()
-		section_ID = 1
-		cell_ID = 1 #Filhal Hardcoded
+		section_ID = self.ui.comboBox.currentText()
+		cell_ID = self.ui.comboBox_2.currentText() #Filhal Hardcoded
 		#arrival_Date = '09/11'
 		x = datetime.datetime.now()
 		arrival_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year)
-		Crime = 'Shararti'
+		Crime = self.ui.comboBox_4.currentText()
 		crime_description = self.ui.textEdit_5.toPlainText()
 		sentence = int(self.ui.textEdit_3.toPlainText())
-		Medical_Status = 'Bemaar'
+		Medical_Status = self.ui.comboBox_3.currentText()
 		Emergency_contact_name = self.ui.textEdit_6.toPlainText()
-		duty_assigned = 'IDK'
+		duty_assigned = self.ui.comboBox_5.currentText()
 
 		age = (self.ui.textEdit_4.toPlainText())
 		Emergency_contact_number = self.ui.textEdit_7.toPlainText()
