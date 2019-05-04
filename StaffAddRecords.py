@@ -28,7 +28,7 @@ class StaffAddRecords:
 		self.ui.setupUi(self.diag)
 		self.ui.pushButton.clicked.connect(self.AddRecord)
 		
-		self.ui.comboBox.addItems(["Admin", "Guard", "Other Staff"])
+		self.ui.comboBox.addItems(["Admin", "Guard", "Higher Staff" , "Lower Staff"])
 		self.ui.label.setText("0")
 		self.ui.comboBox.currentIndexChanged.connect(self.updateLabel)
 
