@@ -47,15 +47,18 @@ class PrisonerRecords:
 		self.viewRecords()
 		
 	def deleteRecords(self):
-		r = self.table_ui.tableWidget.currentRow()
-		id=self.table_ui.tableWidget.item(r,0).text()
-		print(id)
-		statement='DELETE FROM prisoner WHERE prisoner_id=?'
+		try:
+			r = self.table_ui.tableWidget.currentRow()
+			id=self.table_ui.tableWidget.item(r,0).text()
+			print(id)
+			statement='DELETE FROM prisoner WHERE prisoner_id=?'
 
-		cur = self.conn.cursor()
-		cur.execute(statement, (id,))
-		self.conn.commit()
-		self.viewRecords()
+			cur = self.conn.cursor()
+			cur.execute(statement, (id,))
+			self.conn.commit()
+			self.viewRecords()
+		except:
+			print("no row is selected")
 
 	def searchRecords(self):
 		data = self.table_ui.textEdit.toPlainText()
@@ -80,18 +83,21 @@ class PrisonerRecords:
 
 	def editRecords(self):
 
+		try:
+			selectedRow = self.table_ui.tableWidget.currentRow()
+			unique_id = self.table_ui.tableWidget.item(selectedRow,0).text()
+			statement='SELECT * FROM prisoner WHERE prisoner_id=?'
+			cur = self.conn.cursor()
 
-		selectedRow = self.table_ui.tableWidget.currentRow()
-		unique_id = self.table_ui.tableWidget.item(selectedRow,0).text()
-		statement='SELECT * FROM prisoner WHERE prisoner_id=?'
-		cur = self.conn.cursor()
-
-		cur.execute(statement, (unique_id,))
-		data = cur.fetchall() #selected row
+			cur.execute(statement, (unique_id,))
+			data = cur.fetchall() #selected row
 
 
-		pops = AddRecords(1,data)
-		print("HI")
+			pops = AddRecords(1,data)
+			print("HI")
+		except:
+			print("can't be edited")
+
 		self.viewRecords()
 
 
