@@ -63,7 +63,7 @@ class PrisonerRecords:
 	def searchRecords(self):
 		data = self.table_ui.textEdit.toPlainText()
 		cur = self.conn.cursor()
-		statement = 'SELECT * from prisoner WHERE ID=? OR NAME=?'
+		statement = 'SELECT * from prisoner WHERE prisoner_id=? OR prisoner_name=?'
 		cur.execute(statement, (data,data))
 
 		rows = cur.fetchall()
