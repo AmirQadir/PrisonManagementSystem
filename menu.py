@@ -46,8 +46,15 @@ class menu:
 		self.ui.label_4.setText(this_user)
 		print("acccess level: " , access_level)
 
-		if access_level != 0:
-			self.ui.pushButton_6.setEnabled(False)
+		if access_level == 0:
+			pass #all allowed
+
+		elif access_level == 1: #guard
+			self.ui.pushButton_6.setEnabled(False) #account
+			
+		else: #not staff or admin
+			self.ui.pushButton_6.setEnabled(False) #account
+			self.ui.pushButton_3.setEnabled(False) #video
 
 
 
