@@ -25,6 +25,8 @@ class StaffRecords:
 		self.table_ui.pushButton.clicked.connect(self.viewRecords)
 		self.table_ui.pushButton_2.clicked.connect(self.addRecords)
 		self.table_ui.pushButton_3.clicked.connect(self.deleteRecords)
+		self.table_ui.pushButton_4.clicked.connect(self.editRecords)
+
 		self.viewRecords()
 		self.diag.exec_()
 		
@@ -65,5 +67,26 @@ class StaffRecords:
 				itr2 = itr2 + 1
 				# print("I am here", str(eachrecord))
 			itr1 = itr1 + 1
+
+	def editRecords(self):
+		print("Me editRecords")
+		try:
+			print("Arrived in try")
+			selectedRow = self.table_ui.tableWidget.currentRow()
+			unique_id = self.table_ui.tableWidget.item(selectedRow,0).text()
+			statement='SELECT * FROM staff WHERE staff_id=?'
+			cur = self.conn.cursor()
+
+			cur.execute(statement, (unique_id,))
+			data = cur.fetchall() #selected row
+
+
+			pops = StaffAddRecords(1,data)
+			print("HI")
+		except:
+			print("can't be edited")
+
+		self.viewRecords()
+
 
 			
