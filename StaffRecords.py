@@ -38,7 +38,7 @@ class StaffRecords:
 		r = self.table_ui.tableWidget.currentRow()
 		id=self.table_ui.tableWidget.item(r,0).text()
 		print(id)
-		statement='DELETE FROM Staff WHERE ID=?'
+		statement='DELETE FROM Staff WHERE staff_id=?'
 
 		cur = self.conn.cursor()
 		cur.execute(statement, (id,))
