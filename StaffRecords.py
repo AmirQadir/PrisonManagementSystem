@@ -38,7 +38,7 @@ class StaffRecords:
 		r = self.table_ui.tableWidget.currentRow()
 		id=self.table_ui.tableWidget.item(r,0).text()
 		print(id)
-		statement='DELETE FROM Prisoner WHERE ID=?'
+		statement='DELETE FROM Staff WHERE ID=?'
 
 		cur = self.conn.cursor()
 		cur.execute(statement, (id,))
@@ -49,7 +49,7 @@ class StaffRecords:
 	def viewRecords(self):
 		print("hello")
 		cur = self.conn.cursor()
-		cur.execute("SELECT * from Staff")
+		cur.execute("SELECT staff_id , staff_name, job, contact, address, cnic, salary, employment_date from Staff")
 
 		rows = cur.fetchall()
 
