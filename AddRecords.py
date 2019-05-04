@@ -27,28 +27,45 @@ class AddRecords:
 		self.ui = Ui_Dialog()
 		self.ui.setupUi(self.diag)
 		self.ui.pushButton.clicked.connect(self.AddRecord)
+		self.ui.comboBox.addItems(["1", "2", "3"])
+		self.ui.comboBox_2.addItems(["1", "2", "3","4","5","6","7","8"])
+		self.ui.comboBox_3.addItems(["Fit","Unfit","Critical"])
+		self.ui.comboBox_4.addItems(["Murder","Roberry","Extortion","Blasphemy","Corruption","Theft","Cyber Crimes","Human Trafficking","Attempt to Commit Suicide"])
+		self.ui.comboBox_5.addItems(["None","Laundry","Cleaning","Kitchen"])
+
 		if self.rights == 1:
 			self.editRecord()
 
 		self.diag.exec_()
 	
 	def AddRecord(self):
+		mydata = self.data[0]
+
 		name = self.ui.textEdit.toPlainText()
-		section_ID = 1
-		cell_ID = 1 #Filhal Hardcoded
-		#arrival_Date = '09/11'
-		x = datetime.datetime.now()
-		arrival_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year)
-		Crime = 'Shararti'
-		crime_description = self.ui.textEdit_5.toPlainText()
+		section_ID = self.ui.comboBox.currentText()
+		cell_ID = self.ui.comboBox_2.currentText() #Filhal Hardcoded
 		sentence = int(self.ui.textEdit_3.toPlainText())
-		Medical_Status = 'Bemaar'
+		
+		if self.rights == 1: #edit mode
+			arrival_Date = mydata[4] #use old arrival date
+
+			#yahan release date change krni hai according to sentence (which has been modified)
+			release_Date = mydata[5] #remomve this 
+
+		else: #new recird hai
+			x = datetime.datetime.now()
+			arrival_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year)
+			
+			release_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year+sentence)
+		
+		Crime = self.ui.comboBox_4.currentText()
+		crime_description = self.ui.textEdit_5.toPlainText()
+		Medical_Status = self.ui.comboBox_3.currentText()
 		Emergency_contact_name = self.ui.textEdit_6.toPlainText()
-		duty_assigned = 'IDK'
+		duty_assigned = self.ui.comboBox_5.currentText()
 
 		age = (self.ui.textEdit_4.toPlainText())
 		Emergency_contact_number = self.ui.textEdit_7.toPlainText()
-		release_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year+sentence)
 		
 
 		newrr = []
@@ -134,6 +151,9 @@ class AddRecords:
 	
 			'''
 
+	#	int index = ui->comboBox->findText(textToFind)
+	#	ui->comboBox->setCurrentIndex(index);
+
 		mydata = self.data[0]
 		print("Data Received",self.data)
 		ID = mydata[0]
@@ -148,8 +168,8 @@ class AddRecords:
 
 		medical = mydata[9]
 		emg_Name = mydata[10]
-		emg_Contact = mydata[11]
-		work_Assigned = mydata[12]
+		emg_Contact = mydata[12]
+		work_Assigned = mydata[11]
 		Age = mydata[13]
 
 		self.rr.append(ID)
@@ -167,8 +187,22 @@ class AddRecords:
 		self.ui.textEdit_6.setText(str(emg_Name))
 		self.ui.textEdit_7.setText(str(emg_Contact))
 
+		index = 0
 
+		index = self.ui.comboBox.findText(str(section))
+		self.ui.comboBox.setCurrentIndex(index)
+		
+		index = self.ui.comboBox_2.findText(str(cell))
+		self.ui.comboBox_2.setCurrentIndex(index)
 
+		index = self.ui.comboBox_3.findText(str(medical))
+		self.ui.comboBox_3.setCurrentIndex(index)
+
+		index = self.ui.comboBox_4.findText(str(crime))
+		self.ui.comboBox_4.setCurrentIndex(index)
+
+		index = self.ui.comboBox_5.findText(str(work_Assigned))
+		self.ui.comboBox_5.setCurrentIndex(index)
 
 
 		
