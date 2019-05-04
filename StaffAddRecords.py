@@ -27,6 +27,7 @@ class StaffAddRecords:
 		self.ui = Ui_Dialog()
 		self.ui.setupUi(self.diag)
 		self.ui.pushButton.clicked.connect(self.AddRecord)
+		self.ui.pushButton_4.clicked.connect(self.editRecord)
 		
 		self.ui.comboBox.addItems(["Admin", "Guard", "Other Staff"])
 		self.ui.label.setText("0")
@@ -39,6 +40,8 @@ class StaffAddRecords:
 	
 	def updateLabel(self):
 		self.ui.label.setText(str(self.ui.comboBox.currentIndex()))
+
+
 				
 
 	def AddRecord(self):
