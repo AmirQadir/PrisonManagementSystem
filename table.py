@@ -103,7 +103,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Search by ID"))
+        self.label.setText(_translate("Dialog", "Search"))
         self.pushButton_5.setText(_translate("Dialog", "Search"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("Dialog", "ID"))
@@ -128,7 +128,7 @@ class Ui_Dialog(object):
         item = self.tableWidget.horizontalHeaderItem(10)
         item.setText(_translate("Dialog", "Emergency Name"))
         item = self.tableWidget.horizontalHeaderItem(11)
-        item.setText(_translate("Dialog", "New Column"))
+        item.setText(_translate("Dialog", "Work Assigned"))
         item = self.tableWidget.horizontalHeaderItem(12)
         item.setText(_translate("Dialog", "Emergency Contact"))
         item = self.tableWidget.horizontalHeaderItem(13)

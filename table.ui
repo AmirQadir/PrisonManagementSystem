@@ -36,7 +36,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Search by ID</string>
+         <string>Search</string>
         </property>
        </widget>
       </item>
@@ -135,7 +135,7 @@
       </column>
       <column>
        <property name="text">
-        <string>New Column</string>
+        <string>Work Assigned</string>
        </property>
       </column>
       <column>
