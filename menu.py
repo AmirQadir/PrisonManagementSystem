@@ -18,6 +18,10 @@ from video import video
 #from main import main
 import PyQt5
 import hashing
+from shutil import copyfile
+import datetime
+
+
 
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -42,6 +46,8 @@ class menu:
 		self.ui.pushButton_2.clicked.connect(self.StaffRecord)
 		self.ui.pushButton_3.clicked.connect(self.showVideo)
 		self.ui.pushButton_6.clicked.connect(self.Account)
+		self.ui.pushButton_5.clicked.connect(self.backup)
+		
 		this_user = self.user_id + " " + self.username  
 		self.ui.label_4.setText(this_user)
 		print("acccess level: " , access_level)
@@ -57,6 +63,17 @@ class menu:
 			self.ui.pushButton_6.setEnabled(False) #account
 			self.ui.pushButton_3.setEnabled(False) #video
 			self.ui.label.setText("Staff Panel")
+
+
+	def backup(self):
+		print("creating backup")
+		currentDT = datetime.datetime.now()
+		path = str(currentDT) + '.db'
+		path = path.replace(':','-')
+
+		copyfile('se_db.db', path)
+		self.ui.label_5.setText("Backup created")
+		print("Backup created as " , path )
 
 
 	def logout(self):
