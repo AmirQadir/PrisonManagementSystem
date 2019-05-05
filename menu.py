@@ -95,7 +95,7 @@ class menu:
 
 	def StaffRecord(self):
 		print("Working")
-		idk = StaffRecords()
+		idk = StaffRecords(self.access)
 
 	def PrisRecords(self):
 

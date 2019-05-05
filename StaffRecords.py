@@ -16,16 +16,26 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 class StaffRecords:
-	def __init__(self):
+	def __init__(self,access_level):
 		self.conn = sqlite3.connect('se_db.db')
 
 		self.diag = QtWidgets.QDialog()
 		self.table_ui = Ui_Dialog()
 		self.table_ui.setupUi(self.diag)
 		self.table_ui.pushButton.clicked.connect(self.viewRecords)
-		self.table_ui.pushButton_2.clicked.connect(self.addRecords)
-		self.table_ui.pushButton_3.clicked.connect(self.deleteRecords)
-		self.table_ui.pushButton_4.clicked.connect(self.editRecords)
+		
+
+		if(access_level==1 or access_level==3):
+			self.table_ui.pushButton_2.setEnabled(False)
+			self.table_ui.pushButton_4.setEnabled(False)
+			self.table_ui.pushButton_3.setEnabled(False)
+		elif(access_level==2):
+			self.table_ui.pushButton_4.setEnabled(False)
+			self.table_ui.pushButton_3.setEnabled(False)
+		else:
+			self.table_ui.pushButton_2.clicked.connect(self.addRecords)
+			self.table_ui.pushButton_4.clicked.connect(self.editRecords)
+			self.table_ui.pushButton_3.clicked.connect(self.deleteRecords)
 
 		self.viewRecords()
 		self.diag.exec_()
