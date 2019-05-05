@@ -9,6 +9,7 @@ from StaffAddRecord_UI import Ui_Dialog
 from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator
 import datetime
+from Alert import Alert
 
 import PyQt5
 
@@ -148,6 +149,7 @@ class StaffAddRecords:
             newrr.clear()
         else:
             """ Insert Alert HERE"""
+            msg = Alert("Invalid input(s)")
 
         
 

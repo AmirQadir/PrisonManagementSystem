@@ -7,7 +7,7 @@ from table import Ui_Dialog
 import sys
 from AddRecord_UI import Ui_Dialog
 import datetime
-
+from Alert import Alert
 import PyQt5
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -68,7 +68,8 @@ class AddRecords:
             x = datetime.datetime.now()
             arrival_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year)
             
-            release_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year+sentence)
+            if sentence != "wrongvalue": #warna string ko int mein add kr rha tha
+                release_Date = str(x.day)+"-"+str(x.month)+"-"+str(x.year+sentence)
         
         Crime = self.ui.comboBox_4.currentText()
         crime_description = self.ui.textEdit_5.toPlainText()
@@ -152,6 +153,7 @@ class AddRecords:
 
         else:
             """ show alert box here """
+            msg = Alert("Invalid input(s)")
 
 
         

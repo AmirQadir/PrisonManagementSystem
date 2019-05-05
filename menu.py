@@ -90,7 +90,7 @@ class menu:
 	def showVideo(self):
 		vid = video()
 		vid.show_webcam()
-		msg = Alert()
+		msg = Alert("Suspicious Activity has been Detected")
 		
 
 	def StaffRecord(self):
