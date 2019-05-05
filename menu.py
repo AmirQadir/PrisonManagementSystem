@@ -51,11 +51,12 @@ class menu:
 
 		elif access_level == 1: #guard
 			self.ui.pushButton_6.setEnabled(False) #account
+			self.ui.label.setText("Guard Panel")
 			
 		else: #not staff or admin
 			self.ui.pushButton_6.setEnabled(False) #account
 			self.ui.pushButton_3.setEnabled(False) #video
-
+			self.ui.label.setText("Staff Panel")
 
 
 	def logout(self):
