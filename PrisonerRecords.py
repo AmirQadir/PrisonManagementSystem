@@ -25,8 +25,11 @@ class PrisonerRecords:
 		self.table_ui = Ui_Dialog()
 		self.table_ui.setupUi(self.diag)
 		self.table_ui.pushButton.clicked.connect(self.viewRecords)
-		if(access_level!=0):
+		if(access_level==1 or access_level==3):
 			self.table_ui.pushButton_2.setEnabled(False)
+			self.table_ui.pushButton_4.setEnabled(False)
+			self.table_ui.pushButton_3.setEnabled(False)
+		elif(access_level==2):
 			self.table_ui.pushButton_4.setEnabled(False)
 			self.table_ui.pushButton_3.setEnabled(False)
 		else:
